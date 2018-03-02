@@ -7,7 +7,7 @@
     "build": "babel --out-dir lib --copy-files src",
     "codeship:decrypt": "./deployment/crypto.sh decrypt ./deployment/encrypted ./deployment/secrets",
     "codeship:encrypt": "./deployment/crypto.sh encrypt ./deployment/secrets ./deployment/encrypted",
-    "dev": "webpack-dev-server --config=support/webpack.config.js",
+    "dev": "webpack-dev-server --mode development --config=support/webpack.config.js",
     "test": "npm-run-all test:*",
     "test:lint": "eslint src",
     "test:unit": "jest"
@@ -22,6 +22,8 @@
     "babel-eslint": "^8.2.2",
     "babel-jest": "^22.4.1",
     "babel-loader": "^7.1.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.18.1",
@@ -39,6 +41,9 @@
   },
   "dependencies": {
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "reselect": "^3.0.1"
   }
 }

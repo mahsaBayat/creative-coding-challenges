@@ -6,7 +6,7 @@ const port = 3000 || process.env.PORT;
 
 module.exports = {
   entry: {
-    app: ['react-hot-loader/patch', resolve(__dirname, 'demo/main.js')],
+    app: ['react-hot-loader/patch', resolve(__dirname, 'demo/main.jsx')],
   },
   output: {
     filename: '[name].js',
