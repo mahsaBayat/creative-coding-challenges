@@ -1,0 +1,6 @@
+- name: unit_tests
+  service: package
+  command: yarn test
+- name: build
+  service: package
+  command: yarn build
