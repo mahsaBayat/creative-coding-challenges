@@ -20,3 +20,7 @@ if (document.readyState !== READY_STATE_LOADING) {
 } else {
 	document.addEventListener('DOMContentLoaded', mount);
 }
+
+if (module.hot) {
+	module.hot.accept('../../src/component/App', mount);
+}

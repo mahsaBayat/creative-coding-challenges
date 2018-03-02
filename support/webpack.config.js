@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const { resolve } = require('path');
 
 const host = '0.0.0.0' || process.env.HOST;
@@ -5,12 +6,25 @@ const port = 3000 || process.env.PORT;
 
 module.exports = {
   entry: {
-    app: './demo/index.js',
+    app: ['react-hot-loader/patch', resolve(__dirname, 'demo/main.js')],
   },
   output: {
     filename: '[name].js',
     publicPath: `http://${host}:${port}`,
-    path: resolve(__dirname, '../dist'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   devServer: {
     host,
@@ -21,4 +35,8 @@ module.exports = {
     hot: true,
     open: true,
   },
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+  ]
 };
