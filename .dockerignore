@@ -1,0 +1,6 @@
+coverage/
+deployment/
+lib/
+node_modules/
+.gitignore
+*.log

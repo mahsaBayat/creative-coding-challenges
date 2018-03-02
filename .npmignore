@@ -1,0 +1,9 @@
+coverage/
+deployment/
+node_modules/
+src/
+test/
+.*
+*.log
+jest.config.js
+yarn.lock
