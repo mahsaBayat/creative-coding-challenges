@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const { resolve } = require('path');
 
 const host = '0.0.0.0' || process.env.HOST;
-const port = 3000 || process.env.PORT;
+const port = 3030 || process.env.PORT;
 
 module.exports = {
   entry: {
@@ -38,5 +38,5 @@ module.exports = {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-  ]
+  ],
 };

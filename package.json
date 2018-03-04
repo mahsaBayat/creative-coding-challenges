@@ -8,6 +8,7 @@
     "codeship:decrypt": "./deployment/crypto.sh decrypt ./deployment/encrypted ./deployment/secrets",
     "codeship:encrypt": "./deployment/crypto.sh encrypt ./deployment/secrets ./deployment/encrypted",
     "dev": "webpack-dev-server --mode development --config=support/webpack.config.js",
+    "story": "start-storybook -p 9001 -c support/storybook",
     "test": "npm-run-all test:*",
     "test:lint": "eslint src",
     "test:unit": "jest"
@@ -15,6 +16,7 @@
   "author": "Christopher Turner <ct@propelleraero.com.au>",
   "license": "UNLICENSED",
   "devDependencies": {
+    "@storybook/react": "^3.3.14",
     "@types/jest": "^22.1.3",
     "@types/node": "^9.4.6",
     "babel-cli": "^6.26.0",
@@ -40,6 +42,7 @@
     "webpack-dev-server": "^3.1.0"
   },
   "dependencies": {
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
