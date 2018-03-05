@@ -2,13 +2,19 @@
   "extends": "airbnb",
   "parser": "babel-eslint",
   "rules": {
+    "indent": ["error", 4],
+    "react/jsx-indent": ["error", 4],
     "import/no-extraneous-dependencies": [
       "error",
       {
           "devDependencies": [
-              "support/**"
+              "support/**",
+              "test/**"
           ]
       }
     ]
+  },
+  "globals":{
+    "window": true
   }
 }

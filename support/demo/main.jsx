@@ -7,20 +7,20 @@ import Root from '../../src/components/Root';
 const READY_STATE_LOADING = 'loading';
 
 function mount() {
-  render(
-    <AppContainer>
-      <Root />
-    </AppContainer>,
-    document.getElementById('mount'),
-  );
+    render(
+        <AppContainer>
+            <Root />
+        </AppContainer>,
+        document.getElementById('mount'),
+    );
 }
 
 if (document.readyState !== READY_STATE_LOADING) {
-  mount();
+    mount();
 } else {
-  document.addEventListener('DOMContentLoaded', mount);
+    document.addEventListener('DOMContentLoaded', mount);
 }
 
 if (module.hot) {
-  module.hot.accept('../../src/components/Root', mount);
+    module.hot.accept('../../src/components/Root', mount);
 }

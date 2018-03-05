@@ -4,7 +4,7 @@ import App from './App';
 import store from '../store';
 
 export default () => (
-  <Provider store={store}>
-    <App />
-  </Provider>
+    <Provider store={store}>
+        <App />
+    </Provider>
 );
