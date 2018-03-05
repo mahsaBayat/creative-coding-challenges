@@ -1,4 +1,5 @@
 import { compose, createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import reducers from '../reducers';
 import middleware from '../middleware';
 
@@ -10,7 +11,7 @@ const composeEnhancers =
         }) : compose;
 /* eslint-enable */
 
-const enhancer = composeEnhancers(applyMiddleware(middleware));
+const enhancer = composeEnhancers(applyMiddleware(thunk, middleware));
 const store = createStore(reducers, enhancer);
 
 export default store;
