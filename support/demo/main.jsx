@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 import document from 'global/document';
-import { hot } from 'react-hot-loader';
 import HotRoot from './HotRoot';
 
 const READY_STATE_LOADING = 'loading';

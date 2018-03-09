@@ -14,4 +14,13 @@ const composeEnhancers =
 const enhancer = composeEnhancers(applyMiddleware(thunk, middleware));
 const store = createStore(reducers, enhancer);
 
+if (module.hot) {
+    /* eslint-disable global-require */
+    module.hot.accept('../reducers', () => {
+        const nextRootReducer = require('../reducers/index');
+        store.replaceReducer(nextRootReducer);
+    });
+    /* eslint-enable */
+}
+
 export default store;
