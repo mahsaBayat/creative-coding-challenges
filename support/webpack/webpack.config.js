@@ -7,8 +7,8 @@ module.exports = merge(commonConfig, {
     entry: {
         app: [resolve(__dirname, '../..', 'src/components/Root.jsx')],
     },
+    mode: 'production',
     output: {
-        mode: 'production',
         path: resolve(__dirname, '../../', 'dist'),
         filename: '[name]/[hash:8].js',
         pathinfo: true,
