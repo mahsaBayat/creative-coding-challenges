@@ -10,8 +10,9 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        publicPath: `http://${host}:${port}`,
+        publicPath: '/',
     },
+    devtool: 'source-map',
     module: {
         rules: [
             {
@@ -35,8 +36,5 @@ module.exports = {
         hot: true,
         open: true,
     },
-    plugins: [
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-    ],
+    plugins: [new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin()],
 };
