@@ -24,6 +24,13 @@ module.exports = merge(commonConfig, {
         inline: true,
         hot: true,
         open: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Content-Type',
+        },
+        public: `${host}:${port}`,
+        historyApiFallback: true,
+        disableHostCheck: true,
     },
     plugins: [new webpack.HotModuleReplacementPlugin()],
 });
