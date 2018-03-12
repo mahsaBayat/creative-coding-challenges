@@ -1,14 +1,19 @@
 {
     "name": "bro-template-node",
     "version": "0.0.0",
-    "description": "Bro template for creating Node.js projects with Codeship deployments.",
+    "description":
+        "Bro template for creating Node.js projects with Codeship deployments.",
     "main": "lib/index.js",
     "scripts": {
         "build": "webpack --config=support/webpack/webpack.config.js",
-        "codeship:decrypt": "./deployment/crypto.sh decrypt ./deployment/encrypted ./deployment/secrets",
-        "codeship:encrypt": "./deployment/crypto.sh encrypt ./deployment/secrets ./deployment/encrypted",
-        "dev": "webpack-dev-server --config=support/webpack/webpack.config.dev.js",
-        "dev-ship": "webpack-dev-server --config=support/webpack/webpack.config.mothership.js",
+        "codeship:decrypt":
+            "./deployment/crypto.sh decrypt ./deployment/encrypted ./deployment/secrets",
+        "codeship:encrypt":
+            "./deployment/crypto.sh encrypt ./deployment/secrets ./deployment/encrypted",
+        "dev":
+            "webpack-dev-server --config=support/webpack/webpack.config.dev.js",
+        "dev-ship":
+            "webpack-dev-server --config=support/webpack/webpack.config.mothership.js",
         "story": "start-storybook -p 9001 -c support/storybook",
         "test": "npm-run-all test:*",
         "test:unit": "jest",
@@ -41,6 +46,7 @@
         "eslint-plugin-prettier": "^2.6.0",
         "eslint-plugin-react": "^7.7.0",
         "global": "^4.3.2",
+        "husky": "^0.14.3",
         "jest": "^22.4.2",
         "npm-run-all": "^4.1.2",
         "prettier": "^1.11.1",
