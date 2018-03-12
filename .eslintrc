@@ -1,20 +1,21 @@
 {
-  "extends": "airbnb",
-  "parser": "babel-eslint",
-  "rules": {
-    "indent": ["error", 4],
-    "react/jsx-indent": ["error", 4],
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-          "devDependencies": [
-              "support/**",
-              "test/**"
-          ]
-      }
-    ]
-  },
-  "globals":{
-    "window": true
-  }
+    "extends": ["airbnb", "prettier", "prettier/react"],
+    "parser": "babel-eslint",
+    "rules": {
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": ["support/**", "test/**"]
+            }
+        ],
+        "prettier/prettier": "error",
+        "quotes": "off"
+    },
+    "globals": {
+        "window": true
+    },
+    "plugins": ["react", "prettier"],
+    "env": {
+        "browser": true
+    }
 }
