@@ -7,6 +7,7 @@
         "build": "webpack --config=support/webpack/webpack.config.js",
         "codeship:decrypt": "./deployment/crypto.sh decrypt ./deployment/encrypted ./deployment/secrets",
         "codeship:encrypt": "./deployment/crypto.sh encrypt ./deployment/secrets ./deployment/encrypted",
+        "codeship:local": "jet steps --key-path deployment/codeship.aes",
         "dev": "webpack-dev-server --config=support/webpack/webpack.config.dev.js",
         "dev-ship": "webpack-dev-server --config=support/webpack/webpack.config.mothership.js",
         "story": "start-storybook -p 9001 -c support/storybook",

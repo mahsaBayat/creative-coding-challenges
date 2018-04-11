@@ -1,9 +1,9 @@
+*.log
+.vscode
 build/
 coverage/
+deployment/*.aes
 deployment/secrets/
 dist/
 lib/
 node_modules/
-*.log
-deployment/*.aes
-.vscode
