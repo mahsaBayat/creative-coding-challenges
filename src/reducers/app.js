@@ -4,16 +4,16 @@ const initialState = {
     message: 'Hello World',
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
     switch (action.type) {
-    case APP_MESSAGE_SET:
-        return {
-            ...state,
-            message: action.message,
-        };
-    default:
-        return {
-            ...state,
-        };
+        case APP_MESSAGE_SET:
+            return {
+                ...state,
+                message: action.message,
+            };
+        default:
+            return {
+                ...state,
+            };
     }
 }

@@ -1,7 +1,8 @@
 {
     "name": "bro-template-node",
     "version": "0.0.0",
-    "description": "Bro template for creating Node.js projects with Codeship deployments.",
+    "description":
+        "Bro template for creating Node.js projects with Codeship deployments.",
     "main": "lib/index.js",
     "scripts": {
         "build": "webpack --config=support/webpack/webpack.config.js",
@@ -12,8 +13,10 @@
         "dev-ship": "webpack-dev-server --config=support/webpack/webpack.config.mothership.js",
         "story": "start-storybook -p 9001 -c support/storybook",
         "test": "npm-run-all test:*",
-        "test:lint": "eslint src",
-        "test:unit": "jest"
+        "test:unit": "jest",
+        "lint": "eslint src",
+        "precommit": "pretty-quick --staged",
+        "prepush": "npm run lint && npm run test"
     },
     "author": "Christopher Turner <ct@propelleraero.com.au>",
     "license": "UNLICENSED",
@@ -34,12 +37,18 @@
         "enzyme-adapter-react-16": "^1.1.1",
         "eslint": "^4.18.1",
         "eslint-config-airbnb": "^16.1.0",
+        "eslint-config-prettier": "^2.9.0",
         "eslint-plugin-import": "^2.9.0",
         "eslint-plugin-jsx-a11y": "^6.0.3",
+        "eslint-plugin-prettier": "^2.6.0",
         "eslint-plugin-react": "^7.7.0",
         "global": "^4.3.2",
+        "husky": "^0.14.3",
         "jest": "^22.4.2",
         "npm-run-all": "^4.1.2",
+        "prettier": "^1.11.1",
+        "prettier-eslint": "^8.8.1",
+        "pretty-quick": "^1.4.1",
         "react-hot-loader": "^4.0.0",
         "webpack": "^4.0.1",
         "webpack-cli": "^2.0.10",
