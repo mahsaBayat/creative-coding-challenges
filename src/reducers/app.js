@@ -1,19 +1,17 @@
-import { APP_MESSAGE_SET } from '../actions/app';
+import { SUBMIT_SIMPLE_FORM } from '../actions/app';
 
-const initialState = {
-    message: 'Hello World',
-};
+const initialState = {};
 
+// takes the current state and an action and
+// returns a new state.
 export default function(state = initialState, action) {
     switch (action.type) {
-        case APP_MESSAGE_SET:
+        case SUBMIT_SIMPLE_FORM:
             return {
                 ...state,
-                message: action.message,
+                credentials: action.credentials,
             };
         default:
-            return {
-                ...state,
-            };
+            return state;
     }
 }

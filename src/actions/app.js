@@ -1,6 +1,7 @@
-export const APP_MESSAGE_SET = 'APP_MESSAGE_SET';
+// action type
+export const SUBMIT_SIMPLE_FORM = 'SUBMIT_SIMPLE_FORM';
 
-export const setMessage = message => ({
-    type: APP_MESSAGE_SET,
-    message,
+export const submitSimpleForm = (credentials: Credentials) => ({
+    type: SUBMIT_SIMPLE_FORM,
+    credentials,
 });

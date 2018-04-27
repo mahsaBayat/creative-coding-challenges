@@ -6,11 +6,15 @@
     "main": "lib/index.js",
     "scripts": {
         "build": "webpack --config=support/webpack/webpack.config.js",
-        "codeship:decrypt": "./deployment/crypto.sh decrypt ./deployment/encrypted ./deployment/secrets",
-        "codeship:encrypt": "./deployment/crypto.sh encrypt ./deployment/secrets ./deployment/encrypted",
+        "codeship:decrypt":
+            "./deployment/crypto.sh decrypt ./deployment/encrypted ./deployment/secrets",
+        "codeship:encrypt":
+            "./deployment/crypto.sh encrypt ./deployment/secrets ./deployment/encrypted",
         "codeship:local": "jet steps --key-path deployment/codeship.aes",
-        "dev": "webpack-dev-server --config=support/webpack/webpack.config.dev.js",
-        "dev-ship": "webpack-dev-server --config=support/webpack/webpack.config.mothership.js",
+        "dev":
+            "webpack-dev-server --config=support/webpack/webpack.config.dev.js",
+        "dev-ship":
+            "webpack-dev-server --config=support/webpack/webpack.config.mothership.js",
         "story": "start-storybook -p 9001 -c support/storybook",
         "test": "npm-run-all test:*",
         "test:unit": "jest",
@@ -21,6 +25,7 @@
     "author": "Christopher Turner <ct@propelleraero.com.au>",
     "license": "UNLICENSED",
     "devDependencies": {
+        "@storybook/addon-actions": "^3.4.2",
         "@storybook/react": "^3.3.14",
         "@types/jest": "^22.1.3",
         "@types/node": "^9.4.6",
@@ -42,6 +47,7 @@
         "eslint-plugin-jsx-a11y": "^6.0.3",
         "eslint-plugin-prettier": "^2.6.0",
         "eslint-plugin-react": "^7.7.0",
+        "flow-bin": "^0.71.0",
         "global": "^4.3.2",
         "husky": "^0.14.3",
         "jest": "^22.4.2",
@@ -63,6 +69,7 @@
         "react-redux": "^5.0.7",
         "redux": "^3.7.2",
         "redux-thunk": "^2.2.0",
-        "reselect": "^3.0.1"
+        "reselect": "^3.0.1",
+        "styled-components": "^3.2.6"
     }
 }

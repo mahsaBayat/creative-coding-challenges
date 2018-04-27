@@ -1,10 +1,19 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
+import SimpleForm from '../SimpleForm';
 
-const App = props => <div>{props.message}</div>;
-
-App.propTypes = {
-    message: PropTypes.string.isRequired,
+type Props = {
+    credentials: Credentials,
+    submitSimpleForm: (credentials: Credentials) => any,
 };
 
-export default App;
+// functional component (it does not have this)
+export default (props: Props) => (
+    <div>
+        <SimpleForm submit={props.submitSimpleForm} />
+        <div>
+            {props.credentials && props.credentials.firstName}{' '}
+            {props.credentials && props.credentials.lastName}
+        </div>
+    </div>
+);

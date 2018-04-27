@@ -1,0 +1,15 @@
+[ignore]
+.*/dist/.*
+.*/test/.*
+.*/node_modules/.*
+
+[include]
+src/.*
+
+[libs]
+flow-typed
+
+[options]
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
+server.max_workers=4
