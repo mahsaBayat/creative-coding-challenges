@@ -1,15 +1,18 @@
-bro-template-react
-==================
-
+# bro-template-react
 A react template.
 
-Deployment
+# Housekeeping
 ----------
+## Flow:
+Flow is a static type checker for JavaScript.
 
-TODO: automate
+To better understand the need for a static type checker, especially Flow, read the following blog post:
+<br />
+[Why I chose to use Flow for static type checking my JavaScript?](https://www.lullabot.com/articles/flow-for-static-type-checking-javascript)
+<br />
+This boiler plate already comes with Flow installed.
+## Lint:
+## Prettier:
+## Storybook:
 
-* Create a new Pro project on codeship linked to your github repo
-* Under `project settings => general` in UI copy the AES key to the file `./deployment/codeship.aes`.
-* Copy the `propeller-system` to `./deployment/secrets/args` and `./deployment/secrets/env` in the form `NPM_TOKEN=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX`
-* Run `yarn codeship:encrypt` to encrypt your keys.
-* Push your branch for testing.
+
