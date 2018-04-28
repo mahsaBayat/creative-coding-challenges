@@ -14,7 +14,7 @@
     "globals": {
         "window": true
     },
-    "plugins": ["react", "prettier"],
+    "plugins": ["react", "prettier", "flowtype"],
     "env": {
         "browser": true
     }

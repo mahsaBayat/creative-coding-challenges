@@ -1,7 +1,6 @@
 // @flow
 
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import FormField from '../components/FormField';
 import Button from '../components/Button';
 

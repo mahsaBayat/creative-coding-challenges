@@ -19,8 +19,7 @@
         "test": "npm-run-all test:*",
         "test:unit": "jest",
         "lint": "eslint src",
-        "precommit": "pretty-quick --staged",
-        "prepush": "npm run lint && npm run test"
+        "precommit": "pretty-quick --staged"
     },
     "author": "Christopher Turner <ct@propelleraero.com.au>",
     "license": "UNLICENSED",
@@ -43,6 +42,7 @@
         "eslint": "^4.18.1",
         "eslint-config-airbnb": "^16.1.0",
         "eslint-config-prettier": "^2.9.0",
+        "eslint-plugin-flowtype": "^2.46.3",
         "eslint-plugin-import": "^2.9.0",
         "eslint-plugin-jsx-a11y": "^6.0.3",
         "eslint-plugin-prettier": "^2.6.0",
