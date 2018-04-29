@@ -6,8 +6,9 @@ import FormField from '../../../src/components/FormField';
 storiesOf('FormField', module).add('with content', () => (
     <FormField
         id="username"
-        label="Username"
-        placeholder="impactblue"
+        label="Username:"
+        placeholder="e.g. jonnybravo"
+        type="text"
         onChange={action('You typed something! YAY')}
     />
 ));

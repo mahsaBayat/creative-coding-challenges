@@ -5,9 +5,10 @@ import styled from 'styled-components';
 
 type Props = {
     label: string,
-    placeholder: string,
+    rows: number,
+    cols: number,
     id: string,
-    type: string,
+    placeholder: string,
     onChange: (text: string) => any,
 };
 
@@ -18,19 +19,16 @@ const StyledLabel = styled.label`
     color: #000080;
 `;
 
-const StyledInput = styled.input`
+const StyledTextArea = styled.textarea`
     padding: 12px 20px;
-    margin: 8px 0;
     display: block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
 `;
 
-class FormField extends PureComponent<Props> {
-    // Use fat arrow functions to lock 'this' to current context becasue context
-    // will change when a function is called from outside this component (e.g. input)
-    onChange = (event: SyntheticEvent<*>) => {
+class FormTextArea extends PureComponent<Props> {
+    onTextAreaChange = (event: SyntheticEvent<*>) => {
         this.props.onChange(event.target.value);
     };
 
@@ -40,15 +38,16 @@ class FormField extends PureComponent<Props> {
                 <StyledLabel htmlFor={this.props.id}>
                     {this.props.label}
                 </StyledLabel>
-                <StyledInput
+                <StyledTextArea
                     id={this.props.id}
+                    rows={this.props.rows}
+                    cols={this.props.cols}
                     placeholder={this.props.placeholder}
-                    type={this.props.type}
-                    onChange={this.onChange}
+                    onChange={this.onTextAreaChange}
                 />
             </div>
         );
     }
 }
 
-export default FormField;
+export default FormTextArea;
