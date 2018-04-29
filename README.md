@@ -1,6 +1,13 @@
 # bro-template-react
 A react template.
 
+# Running the project:
+----------
+1. Git clone the project
+2. Navigate to the directory of the project
+3. Run ```yarn``` to build packages and dependencies
+4. Run ```yarn dev``` to see the storybooks.
+
 # Housekeeping
 ----------
 ## Flow:
@@ -29,5 +36,13 @@ A react template.
 * It runs outside of your app. This allows you to develop UI components in isolation, which can improve component reuse, testability, and development speed. You can build quickly without having to worry about application-specific dependencies. (HOW GREAT IS THIS?)
 * Visit [Storybook Github](https://github.com/storybooks/storybook) to read more about it.
 * This boiler plate already comes with storybooks.
+
+## Styled Components:
+
+* Styled-Components library lets you write CSS in your JavaScript. The premise for CSS-in-JS is that styles, JavaScript, and markup all have the same, shared concern and therefore should be tightly coupled. Problems with potential collisions are resolved by scoping styles to the component. We have a 0% chance of styles leaking. And if styles are updated in the component there are no ripple-effects across the DOM. 
+* Visit [Styled-Components](https://www.styled-components.com/) to learn more about it.
+* This boiler plate already comes with styled-components.
+
+
 
 
