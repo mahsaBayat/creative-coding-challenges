@@ -1,4 +1,4 @@
-# bro-template-react 
+# bro-template-react :trollface:
 A react template.
 
 # Running the project
