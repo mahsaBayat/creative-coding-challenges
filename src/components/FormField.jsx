@@ -2,6 +2,7 @@
 
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
+import InputLabel from './InputLabel';
 
 type Props = {
     label: string,
@@ -37,9 +38,7 @@ class FormField extends PureComponent<Props> {
     render() {
         return (
             <div>
-                <StyledLabel htmlFor={this.props.id}>
-                    {this.props.label}
-                </StyledLabel>
+                <InputLabel content={this.props.label} />
                 <StyledInput
                     id={this.props.id}
                     placeholder={this.props.placeholder}
