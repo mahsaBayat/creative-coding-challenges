@@ -5,7 +5,8 @@ import { Controlled as CodeMirror } from 'react-codemirror2';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript.js';
-import Button from '../components/Button';
+import IFrame from './IFrame';
+import Button from './Button';
 
 type State = {
     userCode: string,
@@ -16,12 +17,17 @@ type Props = {
     template: string,
 };
 
-const Container = styled.div`
-    width: 500px;
-    height: 400px;
+const EditorContainer = styled.div`
+    display: inline;
+    float: left;
+    width: 530px;
+    height: 300px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #273236;
 `;
 
-class Editor extends PureComponent<Props, State> {
+class SingleStepChallenge extends PureComponent<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
@@ -36,7 +42,7 @@ class Editor extends PureComponent<Props, State> {
     render() {
         return (
             <div>
-                <Container>
+                <EditorContainer>
                     <CodeMirror
                         value={this.state.userCode}
                         options={{
@@ -49,13 +55,19 @@ class Editor extends PureComponent<Props, State> {
                         onBeforeChange={(editor, data, userCode) => {
                             this.setState({ userCode });
                         }}
-                        onChange={this.onCodeChange}
                     />
-                    <Button content="Run" onClick={this.onClickRun} />
-                </Container>
+                </EditorContainer>
+                <IFrame
+                    sourceCode={this.state.userCode}
+                    sandbox="allow-scripts"
+                    title="Output"
+                    width="530"
+                    height="300"
+                />
+                <Button content="Run" onClick={this.onClickRun} />
             </div>
         );
     }
 }
 
-export default Editor;
+export default SingleStepChallenge;

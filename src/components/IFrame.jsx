@@ -6,9 +6,14 @@ type Props = {
     sourceCode: string,
     sandbox: string,
     title: string,
-    width: number,
-    height: number,
+    width?: number,
+    height?: number,
 };
+
+const Container = styled.div`
+    border: 0;
+    border-width: 0;
+`;
 class IFrame extends PureComponent<Props> {
     renderSrcDoc() {
         return `
@@ -20,15 +25,16 @@ class IFrame extends PureComponent<Props> {
     }
     render() {
         return (
-            <iframe
-                // because we want to invode the function right at the start, we add () to it.
-                srcDoc={this.renderSrcDoc()}
-                title={this.props.title}
-                width={this.props.width}
-                height={this.props.height}
-                align={this.props.align}
-                sandbox={this.props.sandbox}
-            />
+            <Container>
+                <iframe
+                    // because we want to invode the function right at the start, we add () to it.
+                    srcDoc={this.renderSrcDoc()}
+                    title={this.props.title}
+                    width={this.props.width}
+                    height={this.props.height}
+                    sandbox={this.props.sandbox}
+                />
+            </Container>
         );
     }
 }
