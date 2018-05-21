@@ -5,7 +5,6 @@ import { Controlled as CodeMirror } from 'react-codemirror2';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/javascript/javascript.js';
-import 'codemirror/mode/htmlmixed/htmlmixed.js';
 import Button from '../components/Button';
 
 type State = {
@@ -18,7 +17,7 @@ type Props = {
 };
 
 const Container = styled.div`
-    width: 700px;
+    width: 500px;
     height: 400px;
 `;
 
@@ -41,7 +40,7 @@ class Editor extends PureComponent<Props, State> {
                     <CodeMirror
                         value={this.state.userCode}
                         options={{
-                            name: 'htmlmixed',
+                            name: 'javascript',
                             json: true,
                             theme: 'material',
                             lineNumbers: true,
