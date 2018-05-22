@@ -13,6 +13,7 @@ type State = {
 };
 
 type Props = {
+    onChange: (value: string) => any,
     onRun: (code: State) => any,
     template: string,
 };
@@ -34,7 +35,9 @@ class SingleStepChallenge extends PureComponent<Props, State> {
             userCode: props.template,
         };
     }
-
+    onChangeCode = () => {
+        this.props.onChange(this.state.userCode);
+    };
     onClickRun = () => {
         this.props.onRun(this.state);
     };
@@ -55,6 +58,7 @@ class SingleStepChallenge extends PureComponent<Props, State> {
                         onBeforeChange={(editor, data, userCode) => {
                             this.setState({ userCode });
                         }}
+                        onChange={this.onChangeCode}
                     />
                 </EditorContainer>
                 <IFrame
