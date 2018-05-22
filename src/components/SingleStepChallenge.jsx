@@ -10,11 +10,12 @@ import Button from './Button';
 
 type State = {
     userCode: string,
+    executedCode: string,
 };
 
 type Props = {
     onChange: (value: string) => any,
-    onRun: (code: State) => any,
+    onRun: (code: string) => string,
     template: string,
 };
 
@@ -33,13 +34,22 @@ class SingleStepChallenge extends PureComponent<Props, State> {
         super(props);
         this.state = {
             userCode: props.template,
+            executedCode: props.template,
         };
     }
     onChangeCode = () => {
         this.props.onChange(this.state.userCode);
     };
+
+    // onClickRun = () => {
+    //     this.props.onRun(this.state.userCode);
+    // };
+
     onClickRun = () => {
-        this.props.onRun(this.state);
+        this.props.onRun(this.state.userCode);
+        this.setState({
+            executedCode: this.state.userCode,
+        });
     };
 
     render() {
@@ -62,7 +72,9 @@ class SingleStepChallenge extends PureComponent<Props, State> {
                     />
                 </EditorContainer>
                 <IFrame
-                    sourceCode={this.state.userCode}
+                    sourceCode={
+                        this.state.executedCode ? this.state.executedCode : ' '
+                    }
                     sandbox="allow-scripts"
                     title="Output"
                     width="530"

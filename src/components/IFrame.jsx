@@ -13,6 +13,7 @@ type Props = {
 const Container = styled.div`
     border: 0;
     border-width: 0;
+    border-color: #273236;
 `;
 class IFrame extends PureComponent<Props> {
     renderSrcDoc() {
