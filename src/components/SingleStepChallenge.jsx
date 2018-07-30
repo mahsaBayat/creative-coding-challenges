@@ -41,10 +41,6 @@ class SingleStepChallenge extends PureComponent<Props, State> {
         this.props.onChange(this.state.userCode);
     };
 
-    // onClickRun = () => {
-    //     this.props.onRun(this.state.userCode);
-    // };
-
     onClickRun = () => {
         this.props.onRun(this.state.userCode);
         this.setState({
