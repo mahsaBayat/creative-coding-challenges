@@ -14,8 +14,10 @@ type State = {
 };
 
 type Props = {
-    onChange: (value: string) => any,
-    onRun: (code: string) => string,
+    description?: string,
+    onChange?: (value: string) => void,
+    onRun?: (code: string) => void,
+    onNext?: (code: string) => void,
     template: string,
 };
 
@@ -37,24 +39,40 @@ class SingleStepChallenge extends PureComponent<Props, State> {
             executedCode: props.template,
         };
     }
+
+    componentWillReceiveProps(nextProps: Props) {
+        // handle the template if it changes
+        if (nextProps.template !== this.props.template) {
+            this.setState({
+                userCode: nextProps.template,
+            });
+        }
+    }
+
     onChangeCode = () => {
-        this.props.onChange(this.state.userCode);
+        if (this.props.onChange) {
+            this.props.onChange(this.state.userCode);
+        }
     };
 
-    // onClickRun = () => {
-    //     this.props.onRun(this.state.userCode);
-    // };
-
     onClickRun = () => {
-        this.props.onRun(this.state.userCode);
+        if (this.props.onRun) {
+            this.props.onRun(this.state.userCode);
+        }
         this.setState({
             executedCode: this.state.userCode,
         });
+    };
+    onClickNext = () => {
+        if (this.props.onNext) {
+            this.props.onNext(this.state.userCode); // callback
+        }
     };
 
     render() {
         return (
             <div>
+                <div>{this.props.description}</div>
                 <EditorContainer>
                     <CodeMirror
                         value={this.state.userCode}
@@ -81,6 +99,7 @@ class SingleStepChallenge extends PureComponent<Props, State> {
                     height="300"
                 />
                 <Button content="Run" onClick={this.onClickRun} />
+                <Button content="Next" onClick={this.onClickNext} />
             </div>
         );
     }

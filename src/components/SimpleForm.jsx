@@ -11,7 +11,6 @@ type Props = {
 type State = Credentials;
 
 class SimpleForm extends PureComponent<Props, State> {
-    // initialize the state
     state = {
         firstName: '',
         lastName: '',
@@ -38,16 +37,12 @@ class SimpleForm extends PureComponent<Props, State> {
             <div>
                 <FormField
                     id="firstName"
-                    placeholder="e.g. Jonny"
-                    label="First Name:"
-                    type="text"
+                    placeholder="Tony"
                     onChange={this.onFirstNameChange}
                 />
                 <FormField
                     id="lastName"
-                    placeholder="e.g. Bravo"
-                    label="Last Name:"
-                    type="text"
+                    placeholder="Luk"
                     onChange={this.onLastNameChange}
                 />
                 <Button content="Submit" onClick={this.onClickSubmit} />
