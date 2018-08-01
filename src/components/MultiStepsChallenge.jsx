@@ -5,8 +5,7 @@ import SingleStepChallenge from './SingleStepChallenge';
 import Button from './Button';
 
 type State = {
-    userCode: string, // the code user executes
-    nextScaffold: string,
+    userCodeList: Array<string>,
 };
 
 type Props = {
@@ -17,29 +16,35 @@ type Props = {
 class MultiStepsChallenge extends PureComponent<Props, State> {
     constructor(props: Props) {
         super(props);
+        const userCodeList = Array.from(Array(props.numberOfSteps));
+        userCodeList[0] = props.scaffold;
         this.state = {
-            userCode: this.props.scaffold,
+            // userCodeList: userCodeList,
+            userCodeList,
         };
     }
-    onClickNext = (userCode: string) => {
+    onClickNext = (userCode: string, i: number) => {
+        // pull the fucken array out
+        // const userCodeList = this.state.userCodeList;
+        const { userCodeList } = this.state;
+        userCodeList[i + 1] = userCode;
         this.setState({
-            nextScaffold: userCode,
+            // everything on the right side copy it into the left side because react does not do a deep comparison
+            userCodeList: [...userCodeList],
         });
     };
 
     render() {
-        return (
-            <div>
-                <SingleStepChallenge
-                    template={this.state.userCode}
-                    onNext={this.onClickNext}
-                />
-                <SingleStepChallenge
-                    template={this.state.nextScaffold}
-                    onNext={this.onClickNext}
-                />
-            </div>
-        );
+        const challenges = this.state.userCodeList.map((userCode, i) => (
+            <SingleStepChallenge
+                // when mapping, each child in an array or iterator should have a unique "key" prop.
+                key={i}
+                template={userCode}
+                onNext={(nextCode: string) => this.onClickNext(nextCode, i)}
+            />
+        ));
+
+        return <div>{challenges}</div>;
     }
 }
 
