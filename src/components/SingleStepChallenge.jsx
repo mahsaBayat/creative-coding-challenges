@@ -14,11 +14,14 @@ type State = {
 };
 
 type Props = {
-    description?: string,
+    template: string,
+    isFinalStep: boolean,
+    preImageText?: string,
+    imageSrc?: string,
+    postImageText?: string,
     onChange?: (value: string) => void,
     onRun?: (code: string) => void,
-    onNext?: (code: string) => void,
-    template: string,
+    onSubmit?: (code: string) => void,
 };
 
 const EditorContainer = styled.div`
@@ -41,7 +44,8 @@ class SingleStepChallenge extends PureComponent<Props, State> {
     }
 
     componentWillReceiveProps(nextProps: Props) {
-        // handle the template if it changes
+        // Use this method if component changes and you want to update it.
+        // In this case the template changes every time user clicks next.
         if (nextProps.template !== this.props.template) {
             this.setState({
                 userCode: nextProps.template,
@@ -63,19 +67,28 @@ class SingleStepChallenge extends PureComponent<Props, State> {
             executedCode: this.state.userCode,
         });
     };
-    onClickNext = () => {
-        if (this.props.onNext) {
-            this.props.onNext(this.state.userCode); // callback
+    onClickSubmit = () => {
+        if (this.props.onSubmit) {
+            this.props.onSubmit(this.state.userCode);
         }
     };
 
     render() {
+        const {
+            isFinalStep,
+            preImageText,
+            postImageText,
+            imageSrc,
+        } = this.props;
+        const { userCode, executedCode } = this.state;
         return (
-            <div>
-                <div>{this.props.description}</div>
+            <div isFinalStep={isFinalStep}>
+                <div>{preImageText}</div>
+                <img src={imageSrc} alt="Test" />
+                <div>{postImageText}</div>
                 <EditorContainer>
                     <CodeMirror
-                        value={this.state.userCode}
+                        value={userCode}
                         options={{
                             name: 'javascript',
                             json: true,
@@ -83,23 +96,24 @@ class SingleStepChallenge extends PureComponent<Props, State> {
                             lineNumbers: true,
                             autoCursor: true,
                         }}
-                        onBeforeChange={(editor, data, userCode) => {
-                            this.setState({ userCode });
+                        onBeforeChange={(editor, data, userInput) => {
+                            this.setState({ userCode: userInput });
                         }}
                         onChange={this.onChangeCode}
                     />
                 </EditorContainer>
                 <IFrame
-                    sourceCode={
-                        this.state.executedCode ? this.state.executedCode : ' '
-                    }
+                    sourceCode={executedCode}
                     sandbox="allow-scripts"
                     title="Output"
                     width="530"
                     height="300"
                 />
                 <Button content="Run" onClick={this.onClickRun} />
-                <Button content="Next" onClick={this.onClickNext} />
+                <Button
+                    content={isFinalStep ? 'Submit' : 'Next'}
+                    onClick={this.onClickSubmit}
+                />
             </div>
         );
     }
