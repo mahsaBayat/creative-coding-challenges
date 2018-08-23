@@ -27,11 +27,32 @@ type Props = {
 const EditorContainer = styled.div`
     display: inline;
     float: left;
-    width: 530px;
+    width: calc(50% - 10px);
+    height: 300px;
+    border-width: 2px;
+    border-color: #273236;
+    border-style: solid;
+`;
+
+const IFrameContainer = styled.div`
     height: 300px;
     border-style: solid;
     border-width: 2px;
-    border-color: #273236;
+`;
+
+const StyledText = styled.div`
+    color: #111;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0 75px 20px;
+`;
+const StyledImage = styled.img`
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
 `;
 
 class SingleStepChallenge extends PureComponent<Props, State> {
@@ -42,10 +63,9 @@ class SingleStepChallenge extends PureComponent<Props, State> {
             executedCode: props.template,
         };
     }
-
+    // Use this method if component changes and you want to update it.
+    // In this case the template changes every time user clicks next.
     componentWillReceiveProps(nextProps: Props) {
-        // Use this method if component changes and you want to update it.
-        // In this case the template changes every time user clicks next.
         if (nextProps.template !== this.props.template) {
             this.setState({
                 userCode: nextProps.template,
@@ -82,10 +102,10 @@ class SingleStepChallenge extends PureComponent<Props, State> {
         } = this.props;
         const { userCode, executedCode } = this.state;
         return (
-            <div isFinalStep={isFinalStep}>
-                <div>{preImageText}</div>
-                <img src={imageSrc} alt="Test" />
-                <div>{postImageText}</div>
+            <div>
+                <StyledText>{preImageText}</StyledText>
+                <StyledImage src={imageSrc} alt={imageSrc} />
+                <StyledText>{postImageText}</StyledText>
                 <EditorContainer>
                     <CodeMirror
                         value={userCode}
@@ -102,13 +122,15 @@ class SingleStepChallenge extends PureComponent<Props, State> {
                         onChange={this.onChangeCode}
                     />
                 </EditorContainer>
-                <IFrame
-                    sourceCode={executedCode}
-                    sandbox="allow-scripts"
-                    title="Output"
-                    width="530"
-                    height="300"
-                />
+                <IFrameContainer>
+                    <IFrame
+                        sourceCode={executedCode}
+                        sandbox="allow-scripts"
+                        title="Output"
+                        width="50%"
+                        height="300"
+                    />
+                </IFrameContainer>
                 <Button content="Run" onClick={this.onClickRun} />
                 <Button
                     content={isFinalStep ? 'Submit' : 'Next'}

@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import SingleStepChallenge from './SingleStepChallenge';
 import Button from './Button';
+import Header from './Header';
 
 type ChallengeMetaDataType = {
     preText: string,
@@ -14,11 +15,23 @@ type State = {
 };
 
 type Props = {
+    title: string,
+    headerImageSrc?: string,
+    description?: string,
     metaData?: Array<ChallengeMetaDataType>,
     numberOfSteps?: number,
     onFinalSubmit: (finalSubmittedCode: Array<string>) => void,
     scaffold: string,
 };
+const StyledDescription = styled.p`
+    color: #111;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0 75px 20px;
+    text-align: justify;
+`;
 class MultiStepsChallenge extends PureComponent<Props, State> {
     constructor(props: Props) {
         super(props);
@@ -42,7 +55,13 @@ class MultiStepsChallenge extends PureComponent<Props, State> {
     };
 
     render() {
-        const { metaData, numberOfSteps } = this.props;
+        const {
+            metaData,
+            numberOfSteps,
+            title,
+            headerImageSrc,
+            description,
+        } = this.props;
         const { userCodeList } = this.state;
         const preImageDescriptions = metaData.map((value, i) => value.preText);
 
@@ -65,9 +84,14 @@ class MultiStepsChallenge extends PureComponent<Props, State> {
             />
         ));
 
-        return <div>{challenges}</div>;
+        return (
+            <div>
+                <Header title={title} imageSrc={headerImageSrc} />
+                <StyledDescription>{description}</StyledDescription>
+                {challenges}
+            </div>
+        );
     }
 }
 
 export default MultiStepsChallenge;
-// const materialNames = data.map((value, i) => value.materialName);
