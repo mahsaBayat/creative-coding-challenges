@@ -1,22 +1,24 @@
 {
-    "data": {
+    "metaData": {
         "numberOfSteps": "2",
         "title": "The Flipped Triangle",
-        "headerImageSrc": "'../../../src/Assets/Images/Background.jpeg",
+        "headerImageSrc": "backgroundImage",
         "generalDescription":
-            "General Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non ante vitae turpis egestas laoreet sed a ante. Proin congue odio vel nunc maximus, eget auctor nunc varius. Fusce facilisis purus ex. Proin a gravida enim. Vivamus sed bibendum sem, posuere ultricies libero. Morbi at enim nisl. Duis rhoncus a quam ac feugiat. Aenean suscipit congue nunc quis vehicula. Aenean eu pretium sem. Phasellus eget rutrum ante. Nulla eu magna sem. Etiam scelerisque arcu neque, et volutpat nisl sollicitudin in. Aenean eu erat tortor. Vestibulum at ipsum urna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse porta feugiat metus quis laoreet.",
+            "We’ve already learned how to use nested for loops to create interesting results. In this challenge you will use nested for loops to create a flipped triangle.",
         "initialTemplate":
             "function setup() { createCanvas(400, 400); ellipseMode(RADIUS); noStroke();}"
     },
-    "steps": [
+    "stepData": [
         {
-            "preText": "Step 1",
-            "postText": "Let's make a grid first.",
+            "preText":
+                "First let’s make a grid of ellipses. We know how to easily do this with two for loops.",
+            "postText":
+                "In this example, the grid gets lighter at it goes down.Can you change it to be lighter as it goes across?",
             "imageSrc": "gridImage"
         },
         {
-            "preText": "Step 2",
-            "postText": "Now let's turn it into a triangle.",
+            "preText": "Now let’s turn our grid into a triangle.",
+            "postText": "Can you flip the triangle to make it look like this?",
             "imageSrc": "triangleImage"
         }
     ]

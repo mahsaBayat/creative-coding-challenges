@@ -8,28 +8,33 @@ type Props = {
     imageSrc?: string,
 };
 
+const StyledContainer = styled.div`
+    height: 200px;
+    background-image: url(${props => props.imageSrc});
+    background-repeat: repeat;
+    background-size: 100px 100px;
+    margin: 0 75px 24px;
+`;
+
 const StyledHeader = styled.h1`
-    color: #ff4a4a;
-    /* color: #f2f2f2; */
-    background: #ff4a4a;
+    /* background-color: #ff4a4a; */
+    color: #f2f2f2;
     font-size: 75px;
     line-height: 74px;
     font-weight: 700;
     text-align: center;
-    margin: 0 5px 24px;
-    padding: 10px;
-    margin: 0 5px 24px;
+    vertical-align: center;
+    padding: 50px;
+    margin: 0 75px 24px;
     font-family: 'Open Sans', sans-serif;
-    background-image: url(${props => props.imageSrc});
 `;
-
 class Header extends PureComponent<Props> {
     render() {
-        const { title, imageSrc, description } = this.props;
+        const { title, imageSrc } = this.props;
         return (
-            <div>
-                <StyledHeader imageSrc={imageSrc}>{title}</StyledHeader>
-            </div>
+            <StyledContainer imageSrc={imageSrc}>
+                <StyledHeader>{title}</StyledHeader>
+            </StyledContainer>
         );
     }
 }

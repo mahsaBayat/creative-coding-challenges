@@ -39,7 +39,9 @@ const IFrameContainer = styled.div`
     border-style: solid;
     border-width: 2px;
 `;
-
+const StyledWrapper = styled.div`
+    margin: 0 75px 24px;
+`;
 const StyledText = styled.div`
     color: #111;
     font-family: 'Open Sans', sans-serif;
@@ -49,10 +51,15 @@ const StyledText = styled.div`
     margin: 0 75px 20px;
 `;
 const StyledImage = styled.img`
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 400px;
     display: block;
     margin: 0 auto;
+    margin-top: 24px;
+    margin-bottom: 24px;
+`;
+const StyledRunButton = Button.extend`
+    margin: 0 0 20px 75px;
 `;
 
 class SingleStepChallenge extends PureComponent<Props, State> {
@@ -106,32 +113,34 @@ class SingleStepChallenge extends PureComponent<Props, State> {
                 <StyledText>{preImageText}</StyledText>
                 <StyledImage src={imageSrc} alt={imageSrc} />
                 <StyledText>{postImageText}</StyledText>
-                <EditorContainer>
-                    <CodeMirror
-                        value={userCode}
-                        options={{
-                            name: 'javascript',
-                            json: true,
-                            theme: 'material',
-                            lineNumbers: true,
-                            autoCursor: true,
-                        }}
-                        onBeforeChange={(editor, data, userInput) => {
-                            this.setState({ userCode: userInput });
-                        }}
-                        onChange={this.onChangeCode}
-                    />
-                </EditorContainer>
-                <IFrameContainer>
-                    <IFrame
-                        sourceCode={executedCode}
-                        sandbox="allow-scripts"
-                        title="Output"
-                        width="50%"
-                        height="300"
-                    />
-                </IFrameContainer>
-                <Button content="Run" onClick={this.onClickRun} />
+                <StyledWrapper>
+                    <EditorContainer>
+                        <CodeMirror
+                            value={userCode}
+                            options={{
+                                name: 'javascript',
+                                json: true,
+                                theme: 'material',
+                                lineNumbers: true,
+                                autoCursor: true,
+                            }}
+                            onBeforeChange={(editor, data, userInput) => {
+                                this.setState({ userCode: userInput });
+                            }}
+                            onChange={this.onChangeCode}
+                        />
+                    </EditorContainer>
+                    <IFrameContainer>
+                        <IFrame
+                            sourceCode={executedCode}
+                            sandbox="allow-scripts"
+                            title="Output"
+                            width="50%"
+                            height="300"
+                        />
+                    </IFrameContainer>
+                </StyledWrapper>
+                <StyledRunButton content="Run" onClick={this.onClickRun} />
                 <Button
                     content={isFinalStep ? 'Submit' : 'Next'}
                     onClick={this.onClickSubmit}
