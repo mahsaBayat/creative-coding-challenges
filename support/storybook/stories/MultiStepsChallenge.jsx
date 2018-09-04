@@ -12,7 +12,10 @@ const scaffold = ChallengeMetaData.metaData.initialTemplate;
 const stepsMetaData = ChallengeMetaData.stepData;
 const challengeTitle = ChallengeMetaData.metaData.title;
 const challengeDescription = ChallengeMetaData.metaData.generalDescription;
-const metaData = [
+// I use the following as the metaData because of the image importing issue from JSON.
+// You can simply replace the trinagleMetaData with stepsMetaData and read the data from there
+// but you have the images anymore.
+const triangleMetaData = [
     {
         preText:
             'First let’s make a grid of ellipses. We know how to easily do this with two for loops.',
@@ -32,7 +35,7 @@ storiesOf('MultiStepsChallenge', module).add('The Triangle Challenge', () => (
         scaffold={scaffold}
         numberOfSteps={numberOfSteps}
         onFinalSubmit={action('here is your shitty code')}
-        metaData={metaData}
+        metaData={triangleMetaData}
         title={challengeTitle}
         headerImageSrc={flippedTriangleImage}
         description={challengeDescription}

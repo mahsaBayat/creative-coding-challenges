@@ -1,10 +1,10 @@
 {
     "metaData": {
         "numberOfSteps": "2",
-        "title": "The Flipped Triangle",
+        "title": "Combining conditional loops to create patterns",
         "headerImageSrc": "backgroundImage",
         "generalDescription":
-            "We’ve already learned how to use nested for loops to create interesting results. In this challenge you will use nested for loops to create a flipped triangle. Learning outcomes: Understand how to combine conditional loops to create logical patterns of values.",
+            "Description:Conditional loops allow us to repeat a block of code until a condition has been met. Using a combination of ‘conditionals’ we can draw lines to the screen automatically but with different values each time. In this challenge you will use conditionals and randomness to create a pattern that changes every time the code is run.",
         "initialTemplate":
             "function setup() { createCanvas(400, 400); ellipseMode(RADIUS); noStroke();}"
     },
